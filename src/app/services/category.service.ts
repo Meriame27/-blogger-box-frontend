@@ -9,7 +9,7 @@ import { Category } from "../data/category";
 @Injectable()
 export class CategoryService {
   //private categoriesUrl = 'http://localhost:8080/v1/categories';
-  private categoriesUrl = '${environment.apiUrl}v1/categories';
+  private categoriesUrl = `${environment.apiUrl}v1/categories`;
 
   constructor(private http: HttpClient){}
 

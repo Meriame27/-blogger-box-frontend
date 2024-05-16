@@ -3,20 +3,22 @@ import { HttpClient } from "@angular/common/http";
 import { Observable, catchError, of } from "rxjs";
 
 import { POSTS, Post } from "../data/post";
+import { environment } from "../environment/environment.prod";
 
 @Injectable()
 export class PostService {
-  //private postsUrl = 'http://localhost:8080/v1/categories';
-  private postsUrl = '${environment.apiUrl}v1/categories';
+
+  private postsUrl = `${environment.apiURL}v1/posts`;
 
   constructor(private http: HttpClient) { }
 
-  /**getPosts(): Observable<Post[]> {
+  /*getPosts(): Observable<Post[]> {
     const posts = of(POSTS);
     return posts;
-  }**/
-
+  }
+  */
   getPosts(): Observable<Post[]> {
+    console.log()
     return this.http.get<Post[]>(this.postsUrl).pipe(catchError(this.handleError<Post[]>('getPosts')));
   }
 
@@ -27,4 +29,5 @@ export class PostService {
     return of(result as T);
     };
   }
+  
 }
